@@ -10,18 +10,18 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-composer require --prefer-dist mehulpatel/yii2-audit-log:"dev-master"
+composer require --prefer-dist mehulpatel/vspl:"dev-master"
 ```
 or
 
 ```
-php composer.phar require --prefer-dist mehulpatel/yii2-audit-log:"dev-master"
+php composer.phar require --prefer-dist mehulpatel/vspl:"dev-master"
 ```
 
 or add
 
 ```
-"mehulpatel/yii2-audit-log": "dev-master"
+"mehulpatel/vspl": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
@@ -31,7 +31,7 @@ to the require section of your `composer.json` file.
 To run migration to create "tbl_audit_entry" table in your db.
 
 ```php
-php yii migrate/up --migration-path "@vendor/mehulpatel/yii2-audit-log/src/migrations/"
+php yii migrate/up --migration-path "@vendor/mehulpatel/vspl/src/migrations/"
 ```
 or
 ```
