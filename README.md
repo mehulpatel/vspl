@@ -1,4 +1,4 @@
-mehulpatel/yii2-audit-log
+mehulpatel/vspl
 =============================
 Yii2 audit record and database changes details 
 
