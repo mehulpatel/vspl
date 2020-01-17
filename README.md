@@ -29,7 +29,7 @@ to the require section of your `composer.json` file.
 ##### Migration or Table
 
 ```
-you can also import "audit_entry.sql" directly in your DB.
+you need to import "audit_entry.sql" directly in your DB.
 ```
 
 ##### Module
