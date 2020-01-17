@@ -58,17 +58,23 @@
          */
         public function afterSave($event, $attributes = null)
         {
+            
             try {
                 $userId = Yii::$app->user->identity->getId();
-                $userIpAddress = Yii::$app->request->getUserIP();
+                if(Yii::$app->request->isConsoleRequest) $userIpAddress = 'CRON SYSTEM';
+                else $userIpAddress = Yii::$app->request->getUserIP();
                 
             } catch (Exception $e) {
                 $userId = self::NO_USER_ID;
+                if(Yii::$app->request->isConsoleRequest) $userIpAddress = 'CRON SYSTEM';
+                else $userIpAddress = Yii::$app->request->getUserIP();
             }
             
+            $model_id = 'NA';
             $newAttributes = $this->owner->getAttributes();
             $oldAttributes = $event->changedAttributes;
-            
+            if(isset($newAttributes) && !empty($newAttributes)) $model_id = $newAttributes['id'];
+
             $action = Yii::$app->controller->action->id;
             
             if (!$this->owner->isNewRecord) {
@@ -81,6 +87,7 @@
                     }
                     if ($oldValue != $newValue) {
                         $log = new AuditEntry();
+                        $log->model_id = $model_id;
                         $log->old_value = $oldValue;
                         $log->new_value = $newValue;
                         $log->operation = 'UPDATE';
@@ -90,12 +97,18 @@
                         $log->user_id = $userId;
                         $log->ip = $userIpAddress;
                         
-                        $log->save(false);
+                        if($log->save(false)) return false;
+                        else {
+                            echo '<pre>';
+                            print_r($log->getErrors());
+                            die();
+                        }
                     }
                 }
             } else {
                 foreach ($newAttributes as $name => $value) {
                     $log = new AuditEntry();
+                    $log->model_id = $model_id;
                     $log->old_value = 'NA';
                     $log->new_value = $value;
                     $log->operation = 'INSERT';
@@ -105,9 +118,15 @@
                     $log->user_id = $userId;
                     $log->ip = $userIpAddress;
                     
-                    $log->save();
+                    if($log->save(false)) return false;
+                    else {
+                        echo '<pre>';
+                        print_r($log->getErrors());
+                        die();
+                    }
                 }
             }
+            
             return true;
         }
         
@@ -128,6 +147,7 @@
             }
             
             $log = new AuditEntry();
+            $log->model_id = 'NA';
             $log->old_value = 'NA';
             $log->new_value = 'NA';
             $log->operation = 'DELETE';
