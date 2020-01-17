@@ -26,16 +26,10 @@ or add
 
 to the require section of your `composer.json` file.
 
-##### Migration
+##### Migration or Table
 
-To run migration to create "tbl_audit_entry" table in your db.
-
-```php
-php yii migrate/up --migration-path "@vendor/mehulpatel/vspl/src/migrations/"
 ```
-or
-```
-you can also import "tbl_audit_entry.sql" directly in your DB.
+you can also import "audit_entry.sql" directly in your DB.
 ```
 
 ##### Module
