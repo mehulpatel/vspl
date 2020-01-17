@@ -32,31 +32,31 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="form-group">
-                                <?= $form->field($model, 'audit_entry_model_name') ?>
+                                <?= $form->field($model, 'model_name') ?>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <?= $form->field($model, 'audit_entry_operation') ?>
+                                <?= $form->field($model, 'operation') ?>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <?= $form->field($model, 'audit_entry_field_name') ?>
+                                <?= $form->field($model, 'field_name') ?>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <?= $form->field($model, 'audit_entry_user_id') ?>
+                                <?= $form->field($model, 'user_id') ?>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <?= $form->field($model, 'audit_entry_ip') ?>
+                                <?= $form->field($model, 'ip') ?>
 
                             </div>
                         </div>

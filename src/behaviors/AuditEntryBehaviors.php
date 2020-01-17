@@ -81,14 +81,14 @@
                     }
                     if ($oldValue != $newValue) {
                         $log = new AuditEntry();
-                        $log->audit_entry_old_value = $oldValue;
-                        $log->audit_entry_new_value = $newValue;
-                        $log->audit_entry_operation = 'UPDATE';
-                        $log->audit_entry_model_name = substr(get_class($this->owner), strrpos(get_class($this->owner), '\\') + 1);
-                        $log->audit_entry_field_name = $name;
-                        $log->audit_entry_timestamp = new Expression('unix_timestamp(NOW())');
-                        $log->audit_entry_user_id = $userId;
-                        $log->audit_entry_ip = $userIpAddress;
+                        $log->old_value = $oldValue;
+                        $log->new_value = $newValue;
+                        $log->operation = 'UPDATE';
+                        $log->model_name = substr(get_class($this->owner), strrpos(get_class($this->owner), '\\') + 1);
+                        $log->field_name = $name;
+                        $log->timestamp = new Expression('unix_timestamp(NOW())');
+                        $log->user_id = $userId;
+                        $log->ip = $userIpAddress;
                         
                         $log->save(false);
                     }
@@ -96,14 +96,14 @@
             } else {
                 foreach ($newAttributes as $name => $value) {
                     $log = new AuditEntry();
-                    $log->audit_entry_old_value = 'NA';
-                    $log->audit_entry_new_value = $value;
-                    $log->audit_entry_operation = 'INSERT';
-                    $log->audit_entry_model_name = substr(get_class($this->owner), strrpos(get_class($this->owner), '\\') + 1);
-                    $log->audit_entry_field_name = $name;
-                    $log->audit_entry_timestamp = new Expression('unix_timestamp(NOW())');
-                    $log->audit_entry_user_id = $userId;
-                    $log->audit_entry_ip = $userIpAddress;
+                    $log->old_value = 'NA';
+                    $log->new_value = $value;
+                    $log->operation = 'INSERT';
+                    $log->model_name = substr(get_class($this->owner), strrpos(get_class($this->owner), '\\') + 1);
+                    $log->field_name = $name;
+                    $log->timestamp = new Expression('unix_timestamp(NOW())');
+                    $log->user_id = $userId;
+                    $log->ip = $userIpAddress;
                     
                     $log->save();
                 }
@@ -128,14 +128,14 @@
             }
             
             $log = new AuditEntry();
-            $log->audit_entry_old_value = 'NA';
-            $log->audit_entry_new_value = 'NA';
-            $log->audit_entry_operation = 'DELETE';
-            $log->audit_entry_model_name = substr(get_class($this->owner), strrpos(get_class($this->owner), '\\') + 1);
-            $log->audit_entry_field_name = 'N/A';
-            $log->audit_entry_timestamp = new Expression('unix_timestamp(NOW())');
-            $log->audit_entry_user_id = $userId;
-            $log->audit_entry_ip = $userIpAddress;
+            $log->old_value = 'NA';
+            $log->new_value = 'NA';
+            $log->operation = 'DELETE';
+            $log->model_name = substr(get_class($this->owner), strrpos(get_class($this->owner), '\\') + 1);
+            $log->field_name = 'N/A';
+            $log->timestamp = new Expression('unix_timestamp(NOW())');
+            $log->user_id = $userId;
+            $log->ip = $userIpAddress;
             
             $log->save();
             

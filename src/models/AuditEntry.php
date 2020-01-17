@@ -7,15 +7,15 @@ use Yii;
 /**
  * This is the model class for table "tbl_audit_entry".
  *
- * @property int $audit_entry_id
- * @property string $audit_entry_timestamp
- * @property string $audit_entry_model_name
- * @property string $audit_entry_operation
- * @property string $audit_entry_field_name
- * @property string $audit_entry_old_value
- * @property string $audit_entry_new_value
- * @property string $audit_entry_user_id
- * @property string $audit_entry_ip
+ * @property int $id
+ * @property string $timestamp
+ * @property string $model_name
+ * @property string $operation
+ * @property string $field_name
+ * @property string $old_value
+ * @property string $new_value
+ * @property string $user_id
+ * @property string $ip
  */
 class AuditEntry extends \yii\db\ActiveRecord
 {
@@ -33,9 +33,9 @@ class AuditEntry extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['audit_entry_timestamp', 'audit_entry_model_name', 'audit_entry_operation', 'audit_entry_field_name', 'audit_entry_old_value', 'audit_entry_new_value', 'audit_entry_user_id', 'audit_entry_ip'], 'required'],
-            [['audit_entry_old_value', 'audit_entry_new_value'], 'string'],
-            [['audit_entry_timestamp', 'audit_entry_model_name', 'audit_entry_operation', 'audit_entry_field_name', 'audit_entry_user_id', 'audit_entry_ip'], 'string', 'max' => 100],
+            [['timestamp', 'model_name', 'operation', 'field_name', 'old_value', 'new_value', 'user_id', 'ip'], 'required'],
+            [['old_value', 'new_value'], 'string'],
+            [['timestamp', 'model_name', 'operation', 'field_name', 'user_id', 'ip'], 'string', 'max' => 100],
         ];
     }
 
@@ -45,15 +45,15 @@ class AuditEntry extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'audit_entry_id' => Yii::t('app', 'ID'),
-            'audit_entry_timestamp' => Yii::t('app','Timestamp'),
-            'audit_entry_model_name' => Yii::t('app', 'Model Name'),
-            'audit_entry_operation' => Yii::t('app', 'Action'),
-            'audit_entry_field_name' => Yii::t('app', 'Updated Field Name'),
-            'audit_entry_old_value' => Yii::t('app', 'Old Value'),
-            'audit_entry_new_value' => Yii::t('app', 'New Value'),
-            'audit_entry_user_id' => Yii::t('app', 'User'),
-            'audit_entry_ip' => Yii::t('app', 'IP Address'),
+            'id' => Yii::t('app', 'ID'),
+            'timestamp' => Yii::t('app','Timestamp'),
+            'model_name' => Yii::t('app', 'Model Name'),
+            'operation' => Yii::t('app', 'Action'),
+            'field_name' => Yii::t('app', 'Updated Field Name'),
+            'old_value' => Yii::t('app', 'Old Value'),
+            'new_value' => Yii::t('app', 'New Value'),
+            'user_id' => Yii::t('app', 'User'),
+            'ip' => Yii::t('app', 'IP Address'),
         ];
     }
 }

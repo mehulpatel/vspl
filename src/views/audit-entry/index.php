@@ -41,45 +41,45 @@
                             ],
                             'columns' => [
                                 [
-                                    'attribute' => 'audit_entry_timestamp',
+                                    'attribute' => 'timestamp',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                     'value' => function ($model) {
-                                        return Yii::$app->dateTimeConversion->convertTimestampToDateTime($model->audit_entry_timestamp);
+                                        return Yii::$app->dateTimeConversion->convertTimestampToDateTime($model->timestamp);
                                     }
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_model_name',
+                                    'attribute' => 'model_name',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_operation',
+                                    'attribute' => 'operation',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_field_name',
+                                    'attribute' => 'field_name',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_old_value',
+                                    'attribute' => 'old_value',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_new_value',
+                                    'attribute' => 'new_value',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_user_id',
+                                    'attribute' => 'user_id',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
                                 [
-                                    'attribute' => 'audit_entry_ip',
+                                    'attribute' => 'ip',
                                     'headerOptions' => ['class' => 'text-center'],
                                     'contentOptions' => ['class' => 'text-center'],
                                 ],
